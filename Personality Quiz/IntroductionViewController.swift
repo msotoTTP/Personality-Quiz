@@ -12,6 +12,7 @@ class IntroductionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        print(AnimalType.dog.rawValue)
     }
 
 
