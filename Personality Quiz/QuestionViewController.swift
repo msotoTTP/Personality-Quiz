@@ -47,12 +47,41 @@ class QuestionViewController: UIViewController {
             ]
         )
     ]
-    var questionIndex = 0
+    var questionIndex = 2
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        updateUI()
+    }
+    
+    func updateUI() {
+        let question = questions[questionIndex]
+        
+        navigationItem.title = "Question #\(questionIndex + 1)"
+        
+        //display the question
+        
+        //display correct input controls
+        singleStackView.isHidden = true
+        multipleStackView.isHidden = true
+        rangedStackView.isHidden = true
+        
+        switch question.type {
+        case .single:
+            singleStackView.isHidden = false
+        case .multiple:
+            multipleStackView.isHidden = false
+        case .ranged:
+            rangedStackView.isHidden = false
+        }
+        
+        //display answer choices
+        
+        //update progress view
+        
+        //reset controls back to default state
     }
     
 
