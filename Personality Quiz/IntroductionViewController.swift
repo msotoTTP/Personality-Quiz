@@ -15,6 +15,7 @@ class IntroductionViewController: UIViewController {
         print(AnimalType.dog.rawValue)
     }
 
+    @IBAction func unwindToIntroduction(unwindSegue: UIStoryboardSegue) {}
 
 }
 

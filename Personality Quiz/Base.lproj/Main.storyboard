@@ -327,10 +327,19 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Results" id="7YL-q5-1U5">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="eXO-Yb-19I"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="eXO-Yb-19I">
+                            <connections>
+                                <segue destination="HAE-in-2V6" kind="unwind" unwindAction="unwindToIntroductionWithUnwindSegue:" id="BJf-55-EkM"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="descriptionLabel" destination="Oas-xp-orl" id="Bkw-r4-cvv"/>
+                        <outlet property="displayLabel" destination="NNu-r3-26F" id="w5d-ZJ-7Ra"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wve-Su-SOs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="HAE-in-2V6" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2708.6956521739135" y="95.758928571428569"/>
         </scene>
