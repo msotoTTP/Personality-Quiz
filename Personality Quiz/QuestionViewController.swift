@@ -10,8 +10,25 @@ import UIKit
 class QuestionViewController: UIViewController {
     
     @IBOutlet weak var singleStackView: UIStackView!
+    @IBOutlet var singleButton1: UIButton!
+    @IBOutlet var singleButton2: UIButton!
+    @IBOutlet var singleButton3: UIButton!
+    @IBOutlet var singleButton4: UIButton!
+    
     @IBOutlet weak var multipleStackView: UIStackView!
+    @IBOutlet var multiLabel1: UILabel!
+    @IBOutlet var multiLabel2: UILabel!
+    @IBOutlet var multiLabel3: UILabel!
+    @IBOutlet var multiLabel4: UILabel!
+    
     @IBOutlet weak var rangedStackView: UIStackView!
+    @IBOutlet var rangedLabel1: UILabel!
+    @IBOutlet var rangedLabel2: UILabel!
+    
+    @IBOutlet var questionLabel: UILabel!
+    
+    @IBOutlet var questionProgressView: UIProgressView!
+    
     
     var questions: [Question] = [
         Question(
@@ -47,7 +64,7 @@ class QuestionViewController: UIViewController {
             ]
         )
     ]
-    var questionIndex = 2
+    var questionIndex = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,30 +73,55 @@ class QuestionViewController: UIViewController {
         updateUI()
     }
     
+    func updateSingleStack(using answers: [Answer]) {
+        singleStackView.isHidden = false
+        singleButton1.setTitle(answers[0].text, for: .normal)
+        singleButton2.setTitle(answers[1].text, for: .normal)
+        singleButton3.setTitle(answers[2].text, for: .normal)
+        singleButton4.setTitle(answers[3].text, for: .normal)
+    }
+    
+    func updateMultipleStack(using answers: [Answer]) {
+        multipleStackView.isHidden = false
+        multiLabel1.text = answers[0].text
+        multiLabel2.text = answers[1].text
+        multiLabel3.text = answers[2].text
+        multiLabel4.text = answers[3].text
+    }
+    
+    func updateRangedStack(using answers: [Answer]) {
+        rangedStackView.isHidden = false
+        rangedLabel1.text = answers.first?.text
+        rangedLabel2.text = answers.last?.text
+    }
+    
     func updateUI() {
         let question = questions[questionIndex]
         
         navigationItem.title = "Question #\(questionIndex + 1)"
         
         //display the question
+        questionLabel.text = question.text
         
         //display correct input controls
         singleStackView.isHidden = true
         multipleStackView.isHidden = true
         rangedStackView.isHidden = true
         
+        let currentAnswers = question.answers
         switch question.type {
         case .single:
-            singleStackView.isHidden = false
+            updateSingleStack(using: currentAnswers)
         case .multiple:
-            multipleStackView.isHidden = false
+            updateMultipleStack(using: currentAnswers)
         case .ranged:
-            rangedStackView.isHidden = false
+            updateRangedStack(using: currentAnswers)
         }
         
         //display answer choices
         
         //update progress view
+        questionProgressView.progress = Float(questionIndex + 1) / Float(questions.count)
         
         //reset controls back to default state
     }
