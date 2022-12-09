@@ -8,11 +8,15 @@
 import UIKit
 
 class ResultsViewController: UIViewController {
+    
+    //the textbook leaves this as an empty array, which would
+    //force us to define a new initializer among a few other things.
+    //this is easier and works for what we're doing.
+    var results: [Answer] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
     
 
